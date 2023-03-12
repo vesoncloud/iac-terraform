@@ -1,0 +1,113 @@
+
+HashiCorp HCL
+	
+	Terraform recommends that each subsystem should have it own backend configuration
+
+	Step to kick-start with terraform
+	- backend configuration for state files
+	- providers
+	- The dependencies with cloud resources
+	- Start creating resources
+	- Verify the state files
+    ----------------------------------------------------------------------------
+    General Terraform backend configuration
+    - create a s3 bucket (aws) or container (azure)
+    - create a folder in the backend (s3, or container)
+    S3 bucket-name: datalake-staging-daily-prod/terraform-tfstates/layers
+    ----------------------------------------------------------------------------
+    Terraform commands:
+    - terraform --version
+	- terraform init
+	- terraform validate
+	- terraform plan -out tfplan
+	- terraform apply tfplan
+	- terraform plan -out tfplan -target <resource-name>
+	- terraform apply tfplan
+	- terraform refresh
+	- terraform destroy -auto-approve
+	- terraform import
+	- terraform state list
+	- terraform show -json tfplan
+	- terraform show -json tfplan > tfplan.json
+	- tree .
+	- terraform graph
+
+	AWS Modules
+	1.
+	- vpc
+	- route tables (public route table, private route table)
+	- subnets (public subnet, private subnet)
+	- Internet Gateway (IGW)
+	- place the subnets in two difference availability zones(us-east-1a, us-east-1b)
+
+	   terraform init -reconfigure --backend-config=vpc.config
+	   - vpc.config
+	   - providers.tf
+	   - main.tf
+	   - variables.tf
+	   - terraform.tfvars
+	   - outputs.tf
+	-------------------------------------------------------------------------------
+	2. EC2 & Security Groups
+	   terraform init -reconfigure --backend-config=ec2.config
+       - vpc_id
+       - subnet_id
+       - AMI (ami-0dfcb1ef8550277af)
+       - Security Group (sg name)
+       - TCP name
+       - Instance Type (t2.micro)
+       - key-pair
+       - Instance Storage (Volumes)
+       NB: terraform_remote_state (This is the way of referencing one module from another)
+           - s3 bucket
+           - key
+           - region
+
+     3. s3
+        terraform init -reconfigure --backend-config=s3.config
+        - create s3 bucket name
+        - set ACL to private to prevent public access to s3
+        - Disable versioning for s3
+        - Enable the default server-side encryption
+        - Create the folder structure in s3 bucket
+
+     4. SecretsManager
+        terraform init -reconfigure --backend-config=secrets.config
+        - secret string
+        - secret value
+        - map
+        - encoded in json format
+
+    ************************************** GitHub **************************************
+    ************************************************************************************
+       How to generate keys using ssh-keygen
+           $ ssh-keygen -t ed25519 -C “myemail@gmail.com”
+           $ ssh-keygen -t ecdsa -b 521
+    ************************************************************************************
+    ******************************* Git Initialization *********************************
+     $ git config --global user.name “your-username”
+     $ git config --global user.email “your-email-address”
+     $ git config --list --global
+     $ git config --edit --global (:qa!)(do not use this command except you want to change you configuration)
+     $ git init
+     $ git clone <SSH repository-url>
+     $ git remote add origin <SSH URL>
+     $ git remote show origin
+     $ git status
+     $ git add .
+     $ git commit -m “This is my first commit”
+     $ git push -u origin master
+     $ git pull origin master or git fetch origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
