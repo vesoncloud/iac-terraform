@@ -3,7 +3,7 @@ name = "John Smith"
 print("Hello " + name)
 print("Welcome to Python Programming")
 print("Welcome to GitHub")
-
+print("Final check-in to github")
 
 
 
