@@ -62,7 +62,7 @@ HashiCorp HCL
            - s3 bucket
            - key
            - region
-
+     -----------------------------------------------------------------------------------------
      3. s3
         terraform init -reconfigure --backend-config=s3.config
         - create s3 bucket name
@@ -70,7 +70,7 @@ HashiCorp HCL
         - Disable versioning for s3
         - Enable the default server-side encryption
         - Create the folder structure in s3 bucket
-
+     ----------------------------------------------------------------------------------------
      4. SecretsManager
         terraform init -reconfigure --backend-config=secrets.config
         - secret string
@@ -90,14 +90,26 @@ HashiCorp HCL
      $ git config --list --global
      $ git config --edit --global (:qa!)(do not use this command except you want to change you configuration)
      $ git init
-     $ git clone <SSH repository-url>
      $ git remote add origin <SSH URL>
      $ git remote show origin
+     $ git checkout <branch
      $ git status
      $ git add .
+     $ get reset <directory>
      $ git commit -m “This is my first commit”
      $ git push -u origin master
      $ git pull origin master or git fetch origin master
+     $ git clone <SSH repository-url>
+     ------------------------------------------------------------------------------------
+     5. Roles/Policies
+          terraform init -reconfigure --backend-config=roles-policies.config
+        - create permissions for the policy
+        - create a policy
+        - create a role
+        - attach policy to the role
+
+        With the policy you have a statement(s)
+        The statement defines the permissions
 
 
 

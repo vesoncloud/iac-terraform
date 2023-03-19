@@ -4,7 +4,7 @@
 locals {
   my_secret_name       = var.my_secret_name
   my_aws_secret_string = var.my_aws_secret_string
-}
+} 
 
 //************************************************************************************
 // aws secrets manager

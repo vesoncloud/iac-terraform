@@ -1,8 +1,14 @@
-# file that do not have to be uploaded to github
-*.terraform
 # OS junk files
 [Tt]humbs.db
 *.DS_Store
+
+# Terraform files
+*.idea
+*.terraform
+*terraform.lock.hcl
+terraform.tfstate*
+tfplan
+tfplan.*
 
 # Visual Studio files
 *.[Oo]bj
